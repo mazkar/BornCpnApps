@@ -174,7 +174,7 @@ export default function Dashbaord({ navigation }) {
                     fontWeight: "300",
                   }}
                 >
-                  PT. {userData?.company}
+                  {userData?.company}
                 </Text>
                 <Text
                   style={{

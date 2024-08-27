@@ -13,7 +13,7 @@ import { resetReducer } from "../../store/models/auth/actions";
 const AppBar = (props) => {
   const { title, onPressNav, icoRight } = props;
   const [notifVisible, setNotifVisible] = useState(false);
-  const user = useSelector((state) => state?.auth?.user?.FirstName);
+  const user = useSelector((state) => state?.auth?.user?.name);
   const dispatch = useDispatch();
 
   // Notification
@@ -33,6 +33,11 @@ const AppBar = (props) => {
       routes: [{ name: "Login" }],
     });
   };
+
+  function uppercaseFirstInitial(str) {
+    if (!str) return str; // Handle empty string or undefined
+    return str.charAt(0).toUpperCase();
+  }
 
   return props.dashboard ? (
     <View style={styles.appBarContainer}>
@@ -125,7 +130,12 @@ const AppBar = (props) => {
               //   }
               // />
               <TouchableOpacity onPress={() => setNotifVisible(!notifVisible)}>
-                <Avatar.Text size={32} label="A" color="white" />
+                <Avatar.Text
+                  size={32}
+                  label={uppercaseFirstInitial(user)}
+                  color="blue"
+                  style={{ backgroundColor: "white" }}
+                />
               </TouchableOpacity>
             }
           >

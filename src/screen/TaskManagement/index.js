@@ -60,6 +60,8 @@ export default function TaskManagement({ navigation }) {
   const [imageToShow, setImageToShow] = useState(null);
   const [selectedDestination, setSelectedDetination] = useState("");
   const [selectedRequster, setSelectedRequester] = useState("");
+  const [selectedRequstFor, setSelectedRequestFor] = useState("");
+  const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [selectedEndDate, setSelectedEndDate] = useState("");
   const [modalSuccessVis, setModalSuccessVis] = useState(false);
@@ -81,7 +83,9 @@ export default function TaskManagement({ navigation }) {
     setSelectedRequester(e.requestBy);
     setSelectedStartDate(e.DateTimeStart);
     setSelectedEndDate(e.DateTimeEnd);
+    setSelectedRequestFor(e.RequestFor);
     setSelectedCarAllocationId(e.id);
+    setSelectedAddress(e.Address);
   };
   const hideModalAccept = () => {
     setModalAcceptVis(false);
@@ -153,7 +157,7 @@ export default function TaskManagement({ navigation }) {
       getDataPending(userData?.uid, "Assigned");
     }
     if (activeTab == 2) {
-      getDataPending(userData?.uid, "OnDutty");
+      getDataPending(userData?.uid, "OnDuty");
     }
     if (activeTab == 3) {
       getDataPending(userData?.uid, "Completed");
@@ -209,7 +213,7 @@ export default function TaskManagement({ navigation }) {
       )
       .then((response) => {
         console.log(response.data[0]);
-
+        setImageToShow(null);
         setModalSuccessVis(true);
         setModalAcceptVis(false);
         setIsLoading(false);
@@ -264,7 +268,7 @@ export default function TaskManagement({ navigation }) {
         setModalSuccessVis(true);
         setModalFinishVis(false);
         setIsLoading(false);
-        getDataPending(userData?.uid, "OnDutty");
+        getDataPending(userData?.uid, "OnDuty");
         setSuccessMessage(response?.data[0].Message);
         setImage(null);
         setValueKmEnd("");
@@ -392,12 +396,33 @@ export default function TaskManagement({ navigation }) {
                 </View>
                 <View style={{ marginBottom: ms(6) }}>
                   <Text style={{ fontSize: 11 }}>
+                    <Text>Address :</Text>
+                    <Text
+                      style={{ color: COLORS.PRIMARY_DARK, fontWeight: "600" }}
+                    >
+                      {""} {selectedAddress === null ? "-" : selectedAddress}
+                    </Text>
+                  </Text>
+                </View>
+                <View style={{ marginBottom: ms(6) }}>
+                  <Text style={{ fontSize: 11 }}>
                     <Text>Request by :</Text>
                     <Text
                       style={{ color: COLORS.PRIMARY_DARK, fontWeight: "600" }}
                     >
                       {""}
                       {selectedRequster}
+                    </Text>
+                  </Text>
+                </View>
+                <View style={{ marginBottom: ms(6) }}>
+                  <Text style={{ fontSize: 11 }}>
+                    <Text>Request For :</Text>
+                    <Text
+                      style={{ color: COLORS.PRIMARY_DARK, fontWeight: "600" }}
+                    >
+                      {""}
+                      {selectedRequstFor === null ? "-" : selectedRequstFor}
                     </Text>
                   </Text>
                 </View>
@@ -507,12 +532,33 @@ export default function TaskManagement({ navigation }) {
                 </View>
                 <View style={{ marginBottom: ms(6) }}>
                   <Text style={{ fontSize: 11 }}>
+                    <Text>Address :</Text>
+                    <Text
+                      style={{ color: COLORS.PRIMARY_DARK, fontWeight: "600" }}
+                    >
+                      {""} {selectedAddress === null ? "-" : selectedAddress}
+                    </Text>
+                  </Text>
+                </View>
+                <View style={{ marginBottom: ms(6) }}>
+                  <Text style={{ fontSize: 11 }}>
                     <Text>Request by :</Text>
                     <Text
                       style={{ color: COLORS.PRIMARY_DARK, fontWeight: "600" }}
                     >
                       {""}
                       {selectedRequster}
+                    </Text>
+                  </Text>
+                </View>
+                <View style={{ marginBottom: ms(6) }}>
+                  <Text style={{ fontSize: 11 }}>
+                    <Text>Request For :</Text>
+                    <Text
+                      style={{ color: COLORS.PRIMARY_DARK, fontWeight: "600" }}
+                    >
+                      {""}
+                      {selectedRequstFor === null ? "-" : selectedRequstFor}
                     </Text>
                   </Text>
                 </View>

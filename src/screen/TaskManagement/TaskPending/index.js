@@ -67,6 +67,15 @@ export default function TaskPending(props) {
               </View>
               <Divider bold />
               <View style={{ flexDirection: "row" }}>
+                <Text style={styles.txt2}>REQUEST FOR : </Text>
+                <Text style={[styles.txt1, { marginBottom: 12 }]}>
+                  {data?.data?.RequestFor === null
+                    ? "-"
+                    : data?.data?.RequestFor}
+                </Text>
+              </View>
+              <Divider bold />
+              <View style={{ flexDirection: "row" }}>
                 <Text style={styles.txt2}>START DATE : </Text>
                 <Text style={[styles.txt1, { marginBottom: 12 }]}>
                   {moment(data?.data?.DateTimeStart).format("YYYY-MM-DD")}
@@ -92,6 +101,12 @@ export default function TaskPending(props) {
                 <Text style={styles.txt2}>PURPOSE : </Text>
                 <Text style={[styles.txt1, { marginBottom: 12 }]}>
                   {data?.data?.Purpose}
+                </Text>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styles.txt2}>ADDRESS : </Text>
+                <Text style={[styles.txt1, { marginBottom: 12 }]}>
+                  {data?.data?.Address === null ? "-" : data?.data?.Address}
                 </Text>
               </View>
 

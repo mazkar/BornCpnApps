@@ -118,12 +118,12 @@ export default function Dashbaord({ navigation }) {
       return res.data;
     } catch (err) {
       console.error(err);
-      setIsLoading(false);
+      setIsLoadingGet(false);
     }
   }
   useEffect(() => {
     getDataPending(userData?.uid, "Assigned");
-    getDataActiveg(userData?.uid, "Active");
+    getDataActiveg(userData?.uid, "OnDuty");
     getDataComplete(userData?.uid, "Completed");
   }, []);
 
@@ -131,7 +131,7 @@ export default function Dashbaord({ navigation }) {
     React.useCallback(() => {
       // Do something when the screen is focused
       getDataPending(userData?.uid, "Assigned");
-      getDataActiveg(userData?.uid, "Active");
+      getDataActiveg(userData?.uid, "OnDuty");
       getDataComplete(userData?.uid, "Completed");
       // getMenuPagination(uid);
       // Add your logic here to update the component or fetch new data

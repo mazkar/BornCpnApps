@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TextInput } from "react-native-paper";
@@ -75,6 +75,7 @@ export default function Login({ navigation }) {
       console.error(err, "error");
       setIsLoading(false);
       setMessageError(err.message);
+      Alert.alert("Incorrect Username/Password");
       // setModalErrorVis(true);
     }
   }
